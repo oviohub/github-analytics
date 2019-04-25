@@ -1,0 +1,14 @@
+version: "2"
+services:
+  data-analysis:
+    image: data-analysis
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/home/jovyan/work/data_analysis:rw
+    command: bash -c "start-notebook.sh --NotebookApp.token=''"
+    ports:
+      - 8888:8888
+    environment:
+      - PYTHONPATH=/home/jovyan/work
